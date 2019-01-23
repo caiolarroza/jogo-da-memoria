@@ -28,3 +28,7 @@ function createMemoryCardFront() {
 
     $memoryCardFront.insertAdjacentHTML("afterbegin", $iconJs);
 }
+
+function getMouseClick() {
+    console.log("click");
+}
