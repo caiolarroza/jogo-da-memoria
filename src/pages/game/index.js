@@ -1,16 +1,18 @@
-createMemoryCardFront();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
+const $root = document.querySelector("#root");
 
-const $cards = document.querySelectorAll(".memory-card");
+const $cardsWrapper = createCardsWrapper();
+const $memoryCardFront = createMemoryCardFront();
+const $memoryCard = createMemoryCard();
 
-$cards.forEach(($card) => {
-    $card.addEventListener("click", getMouseClick);
-});
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardFront);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardFront);
+
+$root.insertAdjacentElement("beforeend", $cardsWrapper);
