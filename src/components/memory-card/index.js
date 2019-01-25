@@ -1,28 +1,13 @@
-const createMemoryCard = (isFront) => {
-
-    if (isFront) {
-        return `
-            <article class="memory-card -front">
-                <img 
-                    src='img/js.png' 
-                    alt='Javascript' 
-                    class='icon'
-                    onClick='handleClick()'
-                />
-            </article>
-        `;
-    } else {
-        return `
-        <article class="memory-card">
+const createMemoryCard = (src, alt, nameClass) => {
+    return `
+        <article class="memory-card ${nameClass}">
             <img 
-                src='img/icon-collabcode.png' 
-                alt='Gueio mascote da CollabCode' 
-                class='icon'
-                onClick='handleClick()'
+                src="${src}" 
+                alt="${alt}" 
+                class="icon"
+                onClick="handleClick()"
             />
-        </article>
-    `;
-    }
+        </article>`;
 }
 
 function handleClick() {
