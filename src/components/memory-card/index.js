@@ -1,9 +1,11 @@
-const createMemoryCard = (src, alt, nameClass) => {
+const createMemoryCard = (cardObj) => {
+    console.log(cardObj.alt);
+    
     return `
-        <article class="memory-card ${nameClass}">
+        <article class="memory-card ${cardObj.nameClass}">
             <img 
-                src="${src}" 
-                alt="${alt}" 
+                src="${cardObj.src}" 
+                alt="${cardObj.alt}" 
                 class="icon"
                 onClick="handleClick()"
             />
