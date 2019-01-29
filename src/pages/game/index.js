@@ -1,6 +1,7 @@
 const $root = document.querySelector("#root");
 
 const $cardsWrapper = createCardsWrapper();
+const createMemoryCard = memoryCard();
 
 const $memoryCardBug = createMemoryCard({src: "img/bug.png", alt: "Ícone de um bug", nameClass: "-front"});
 const $memoryCardResp = createMemoryCard({src: "img/responsivo.png", alt: "Ícone de responsividade", nameClass: "-front"});

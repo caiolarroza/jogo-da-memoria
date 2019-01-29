@@ -2,7 +2,6 @@ function createCardsWrapper() {
     const $cardsWrapper = document.createElement("section");
     $cardsWrapper.classList.add("cards-wrapper");
 
-
     const $head = document.querySelector("head");
     const $styleWrapper = document.createElement("style");
     $styleWrapper.textContent = `
