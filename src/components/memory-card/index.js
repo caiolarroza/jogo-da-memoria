@@ -3,7 +3,6 @@ const memoryCard = () => {
     
     //object destructuring
     // const {src, alt, nameClass} = cardObj;
-    
     const $head = document.querySelector("head");
     const $styleCard = document.createElement("style");
     
@@ -21,6 +20,10 @@ const memoryCard = () => {
             position: relative;
             cursor: pointer;
             /* margin: 16px;  minha forma de fazer*/ 
+        }
+
+        .memory-card::selection {
+            color: transparent;
         }
     
         .memory-card.-front {
@@ -67,20 +70,68 @@ const memoryCard = () => {
         } */`;
     
     $head.insertBefore($styleCard, null);
-    
+        
     return ({src, alt, nameClass}) => `
         <article class="memory-card ${nameClass}">
             <img 
                 src="${src}" 
                 alt="${alt}" 
                 class="icon"
-                onClick="handleClick()"
+                onClick="handleClick(this, this.parentNode)"
             />
         </article>
     `;
 };
 
-const handleClick = () => {
-    console.log("click");
-    // this.classList.toggle("-front");
+const handleClick = (elem, elemParent) => {
+    const fields = {
+        bug: {
+                src: "img/bug.png",
+                alt: "Ícone de um bug"
+            },
+        resp: {
+            src: "img/responsivo.png",
+            alt: "Ícone de responsividade"
+        },
+        java: {
+            src: "img/java.png",
+            alt: "Ícone de um livro de Java"
+        },
+        js: {
+            src: "img/js.png",
+            alt: "Ícone de um livro de JS"
+        },
+        woman: {
+            src: "img/woman.png",
+            alt: "Ícone de uma mulher programando"
+        },
+        gueio: {
+            src: "img/icon-collabcode.png",
+            alt: "Gueio mascote da CollabCode"
+        }
+    };
+
+    if (elemParent.classList.contains("-front")) {
+        elem.src = fields.gueio.src;
+        elem.alt = fields.gueio.alt;
+    } else {
+        if (elemParent.classList.contains("-js")) {
+            elem.src = fields.js.src;
+            elem.alt = fields.js.alt;
+        } else if (elemParent.classList.contains("-bug")) {
+            elem.src = fields.bug.src;
+            elem.alt = fields.bug.alt;
+        }  else if (elemParent.classList.contains("-java")) {
+            elem.src = fields.java.src;
+            elem.alt = fields.java.alt;
+        }  else if (elemParent.classList.contains("-resp")) {
+            elem.src = fields.resp.src;
+            elem.alt = fields.resp.alt;
+        } else if (elemParent.classList.contains("-woman")) {
+            elem.src = fields.woman.src;
+            elem.alt = fields.woman.alt;
+        }
+    }
+    
+    elemParent.classList.toggle("-front");
 }

@@ -3,11 +3,11 @@ const $root = document.querySelector("#root");
 const $cardsWrapper = createCardsWrapper();
 const createMemoryCard = memoryCard();
 
-const $memoryCardBug = createMemoryCard({src: "img/bug.png", alt: "Ícone de um bug", nameClass: "-front"});
-const $memoryCardResp = createMemoryCard({src: "img/responsivo.png", alt: "Ícone de responsividade", nameClass: "-front"});
-const $memoryCardJava = createMemoryCard({src: "img/java.png", alt: "Ícone de um livro de Java", nameClass: "-front"});
-const $memoryCardJS = createMemoryCard({src: "img/js.png", alt: "Ícone de um livro de JS", nameClass: "-front"});
-const $memoryCardGueio = createMemoryCard({src: "img/icon-collabcode.png", alt: "Gueio mascote da CollabCode"});
+const $memoryCardBug = createMemoryCard({src: "img/bug.png", alt: "Ícone de um bug", nameClass: "-front -bug"});
+const $memoryCardResp = createMemoryCard({src: "img/responsivo.png", alt: "Ícone de responsividade", nameClass: "-front -resp"});
+const $memoryCardJava = createMemoryCard({src: "img/java.png", alt: "Ícone de um livro de Java", nameClass: "-front -java"});
+const $memoryCardJS = createMemoryCard({src: "img/js.png", alt: "Ícone de um livro de JS", nameClass: "-front -js"});
+const $memoryCardGueio = createMemoryCard({src: "img/icon-collabcode.png", alt: "Gueio mascote da CollabCode", nameClass: "-woman"});
 
 
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
