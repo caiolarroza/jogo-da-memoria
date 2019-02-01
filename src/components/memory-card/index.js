@@ -7,7 +7,14 @@ const memoryCard = () => {
     const $styleCard = document.createElement("style");
     
     $styleCard.textContent = `
-        .memory-card {
+
+        .memory-card { 
+            width: 155px;
+            height: 155px;
+            position: relative;
+        }
+
+        .memory-card .card {
             width: 155px;
             height: 155px;
             background-color: #f25a70;
@@ -19,18 +26,21 @@ const memoryCard = () => {
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
             position: relative;
             cursor: pointer;
+            position: absolute;
+            display: none;
             /* margin: 16px;  minha forma de fazer*/ 
         }
 
-        .memory-card::selection {
+        .memory-card .card::selection {
             color: transparent;
         }
     
-        .memory-card.-front {
+        .memory-card .card.-front {
             background-color: #fff;
+            display: block;
         }
     
-        .memory-card.-front::before {
+        .memory-card .card.-front::before {
             content: "";
             width: 95px;
             height: 95px;
@@ -39,12 +49,12 @@ const memoryCard = () => {
             position: absolute;
         }
     
-        .memory-card > .icon {
+        .memory-card .card > .icon {
             width: 100px;
             height: 100px;
         }
     
-        .memory-card.-front > .icon {
+        .memory-card .card.-front > .icon {
             /* position: absolute; minha forma de fazer*/
             transform: translateY(-12px);
         }
@@ -52,18 +62,18 @@ const memoryCard = () => {
         /* forma que fiz */
     
         /* @media (width: 375px) {
-            .memory-card {
+            .memory-card .card {
                 width: 95px;
                 height: 95px;
                 margin: 16px 46px;
             }
     
-            .memory-card.-front::before {
+            .memory-card .card.-front::before {
                 width: 50px;
                 height: 50px;
             }
             
-            .memory-card > .icon {
+            .memory-card .card > .icon {
                 width: 50px;
                 height: 50px;
             }
@@ -72,14 +82,24 @@ const memoryCard = () => {
     $head.insertBefore($styleCard, null);
         
     return ({src, alt, nameClass}) => `
-        <article class="memory-card ${nameClass}">
-            <img 
-                src="${src}" 
-                alt="${alt}" 
-                class="icon"
-                onClick="handleClick(this, this.parentNode)"
-            />
-        </article>
+        <div class="memory-card">
+            <article class="card -front">
+                <img 
+                    src="${src}" 
+                    alt="${alt}" 
+                    class="icon"
+                    onClick="handleClick(this, this.parentNode)"
+                />
+            </article>
+            <article class="card">
+                <img 
+                    src="img/icon-collabcode.png"
+                    alt="O mascote da Collabcode o Gueio" 
+                    class="icon"
+                    onClick="handleClick(this, this.parentNode)"
+                />
+            </article>
+        </div>
     `;
 };
 
