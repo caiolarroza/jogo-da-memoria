@@ -11,8 +11,12 @@ const $memoryCardGueio = createMemoryCard({src: "img/icon-collabcode.png", alt: 
 
 
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardBug);
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardBug);
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardResp);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardResp);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJava);
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJava);
 
 $root.insertAdjacentElement("beforeend", $cardsWrapper);
