@@ -34,6 +34,10 @@ const memoryCard = () => {
             display: none;
         }
 
+        .memory-card.-block {
+            pointer-events: none;
+        }
+
         .memory-card.-active .card.-front {
             display: flex;
         }
@@ -109,7 +113,27 @@ const memoryCard = () => {
 };
 
 const handleClick = ($component, elemParent) => {
+    
     $component.classList.toggle("-active");
+    const activeElements = document.getElementsByClassName("-active");
+    
+    if (activeElements.length === 2) {
+        const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+        notActive.forEach((item) => {
+            item.classList.add("-block");
+        });
+
+        setTimeout(() => {
+            activeElements[0].classList.remove("-active");
+            activeElements[0].classList.remove("-active");
+        }, 2000);
+    } else {
+        const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+        notActive.forEach((item) => {
+            item.classList.remove("-block");
+        });
+    }
+
     // Meu código antigo
     // const fields = {
     //     bug: {
@@ -159,6 +183,5 @@ const handleClick = ($component, elemParent) => {
     //         $component.alt = fields.woman.alt;
     //     }
     // }
-    
-    elemParent.classList.toggle("-front");
+    // elemParent.classList.toggle("-front");
 }
