@@ -114,27 +114,43 @@ const memoryCard = () => {
 
 const handleClick = ($component, elemParent) => {
     
-    $component.classList.toggle("-active");
-    const activeElements = document.getElementsByClassName("-active");
-    
-    if (activeElements.length === 2) {
-        const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
-        notActive.forEach((item) => {
-            item.classList.add("-block");
-        });
+    console.log("qtdActiveMemoryCard ", qtdActiveMemoryCard);
+    if (qtdActiveMemoryCard < 2) {
+        $component.classList.toggle("-active");
+    }
 
+    if (qtdActiveMemoryCard == 1) {
         setTimeout(() => {
-            activeElements[0].classList.remove("-active");
-            activeElements[0].classList.remove("-active");
-        }, 2000);
-    } else {
-        const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
-        notActive.forEach((item) => {
-            item.classList.remove("-block");
-        });
+            const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
+
+            $activeMemoryCards.forEach(($memoryCard) => {
+                $memoryCard.classList.remove("-active");
+            });
+
+            qtdActiveMemoryCard = 0;
+        }, 1500);
     }
 
     // Meu código antigo
+    // const activeElements = document.getElementsByClassName("-active");
+    
+    // if (activeElements.length === 2) {
+    //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+    //     notActive.forEach((item) => {
+    //         item.classList.add("-block");
+    //     });
+
+    //     setTimeout(() => {
+    //         activeElements[0].classList.remove("-active");
+    //         activeElements[0].classList.remove("-active");
+    //     }, 2000);
+    // } else {
+    //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+    //     notActive.forEach((item) => {
+    //         item.classList.remove("-block");
+    //     });
+    // }
+
     // const fields = {
     //     bug: {
     //             src: "img/bug.png",

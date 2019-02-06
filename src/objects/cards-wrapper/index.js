@@ -1,4 +1,7 @@
+let qtdActiveMemoryCard = 0;
+
 function createCardsWrapper() {
+
     const $cardsWrapper = document.createElement("section");
     $cardsWrapper.classList.add("cards-wrapper");
 
@@ -17,7 +20,13 @@ function createCardsWrapper() {
             margin-bottom: 10px;
         }`;
 
-        $head.insertBefore($styleWrapper, null)
+        $head.insertBefore($styleWrapper, null);
+
+        $cardsWrapper.addEventListener("click", event => {
+            
+            qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
+            // $origin.closest(".memory-card.-active");
+        })
 
     return $cardsWrapper;
 }
