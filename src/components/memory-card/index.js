@@ -1,3 +1,6 @@
+let arrClicked = [];
+let count = 0;
+
 //object destructuring já recebendo como parãmentro as variáveis separadas
 const memoryCard = () => {
     
@@ -93,7 +96,7 @@ const memoryCard = () => {
     $head.insertBefore($styleCard, null);
         
     return ({src, alt, nameClass}) => `
-        <div class="memory-card" onClick="handleClick(this, this.parentNode)">
+        <div class="memory-card" onClick="handleClick(this, '${src}')">
             <article class="card -front">
                 <img 
                     src="${src}" 
@@ -112,23 +115,42 @@ const memoryCard = () => {
     `;
 };
 
-const handleClick = ($component, elemParent) => {
-    
-    console.log("qtdActiveMemoryCard ", qtdActiveMemoryCard);
+const handleClick = ($component, src) => {
+
     if (qtdActiveMemoryCard < 2) {
         $component.classList.toggle("-active");
+        arrClicked.push(src);
     }
 
     if (qtdActiveMemoryCard == 1) {
-        setTimeout(() => {
-            const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
-
-            $activeMemoryCards.forEach(($memoryCard) => {
-                $memoryCard.classList.remove("-active");
-            });
-
+        if (arrClicked[0] == arrClicked[1]) {
+            
             qtdActiveMemoryCard = 0;
-        }, 1500);
+            arrClicked = [];
+            
+            let $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
+            
+            $activeMemoryCards.forEach(($memoryCard) => {
+                $memoryCard.classList.add("-found");
+            });
+            
+            count++;
+            console.log("count ", count);
+
+        } else {
+
+            setTimeout(() => {
+                const $activeMemoryCards = document.querySelectorAll(".memory-card.-active:not(.-found)");
+                
+                $activeMemoryCards.forEach(($memoryCard) => {
+                    $memoryCard.classList.remove("-active");
+                });
+                
+                qtdActiveMemoryCard = 0;
+                arrClicked = [];
+
+            }, 1500);
+        }
     }
 
     // Meu código antigo
