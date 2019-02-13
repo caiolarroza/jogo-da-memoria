@@ -1,6 +1,3 @@
-let arrClicked = [];
-let count = 0;
-
 //object destructuring já recebendo como parãmentro as variáveis separadas
 const memoryCard = () => {
     
@@ -33,7 +30,8 @@ const memoryCard = () => {
             /* margin: 16px;  minha forma de fazer*/ 
         }
 
-        .memory-card.-active .card {
+        .memory-card.-active .card,
+        .memory-card.-score .card {
             display: none;
         }
 
@@ -41,7 +39,8 @@ const memoryCard = () => {
             pointer-events: none;
         }
 
-        .memory-card.-active .card.-front {
+        .memory-card.-active .card.-front,
+        .memory-card.-score .card.-front {
             display: flex;
         }
 
@@ -115,41 +114,45 @@ const memoryCard = () => {
     `;
 };
 
+let arrClicked = [];
+let score = 0;
+
 const handleClick = ($component, src) => {
 
-    if (qtdActiveMemoryCard < 2) {
-        $component.classList.toggle("-active");
-        arrClicked.push(src);
-    }
+    if (!$component.classList.contains("-active")) {
 
-    if (qtdActiveMemoryCard == 1) {
-        if (arrClicked[0] == arrClicked[1]) {
-            
-            qtdActiveMemoryCard = 0;
-            arrClicked = [];
-            
-            let $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
-            
-            $activeMemoryCards.forEach(($memoryCard) => {
-                $memoryCard.classList.add("-found");
-            });
-            
-            count++;
-            console.log("count ", count);
-
-        } else {
-
-            setTimeout(() => {
-                const $activeMemoryCards = document.querySelectorAll(".memory-card.-active:not(.-found)");
+        if (qtdActiveMemoryCard < 2) {
+            $component.classList.toggle("-active");
+            arrClicked.push(src);
+        }
+        
+        if (qtdActiveMemoryCard == 1) {
+            if (arrClicked[0] == arrClicked[1]) {
+                
+                let $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
                 
                 $activeMemoryCards.forEach(($memoryCard) => {
+                    $memoryCard.classList.add("-score");
                     $memoryCard.classList.remove("-active");
                 });
                 
                 qtdActiveMemoryCard = 0;
                 arrClicked = [];
-
-            }, 1500);
+                score++;
+                console.log("score ", score);
+            } else {
+                setTimeout(() => {
+                    const $activeMemoryCards = document.querySelectorAll(".memory-card.-active:not(.-found)");
+                    
+                    $activeMemoryCards.forEach(($memoryCard) => {
+                        $memoryCard.classList.remove("-active");
+                    });
+                    
+                    qtdActiveMemoryCard = 0;
+                    arrClicked = [];
+                    
+                }, 1500);
+            }
         }
     }
 
