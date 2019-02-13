@@ -125,12 +125,11 @@ const handleClick = ($component, src) => {
             $component.classList.toggle("-active");
             arrClicked.push(src);
         }
+
+        const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
         
         if (qtdActiveMemoryCard == 1) {
             if (arrClicked[0] == arrClicked[1]) {
-                
-                let $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
-                
                 $activeMemoryCards.forEach(($memoryCard) => {
                     $memoryCard.classList.add("-score");
                     $memoryCard.classList.remove("-active");
@@ -141,9 +140,7 @@ const handleClick = ($component, src) => {
                 score++;
                 console.log("score ", score);
             } else {
-                setTimeout(() => {
-                    const $activeMemoryCards = document.querySelectorAll(".memory-card.-active:not(.-found)");
-                    
+                setTimeout(() => {                    
                     $activeMemoryCards.forEach(($memoryCard) => {
                         $memoryCard.classList.remove("-active");
                     });
@@ -155,74 +152,73 @@ const handleClick = ($component, src) => {
             }
         }
     }
-
-    // Meu código antigo
-    // const activeElements = document.getElementsByClassName("-active");
-    
-    // if (activeElements.length === 2) {
-    //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
-    //     notActive.forEach((item) => {
-    //         item.classList.add("-block");
-    //     });
-
-    //     setTimeout(() => {
-    //         activeElements[0].classList.remove("-active");
-    //         activeElements[0].classList.remove("-active");
-    //     }, 2000);
-    // } else {
-    //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
-    //     notActive.forEach((item) => {
-    //         item.classList.remove("-block");
-    //     });
-    // }
-
-    // const fields = {
-    //     bug: {
-    //             src: "img/bug.png",
-    //             alt: "Ícone de um bug"
-    //         },
-    //     resp: {
-    //         src: "img/responsivo.png",
-    //         alt: "Ícone de responsividade"
-    //     },
-    //     java: {
-    //         src: "img/java.png",
-    //         alt: "Ícone de um livro de Java"
-    //     },
-    //     js: {
-    //         src: "img/js.png",
-    //         alt: "Ícone de um livro de JS"
-    //     },
-    //     woman: {
-    //         src: "img/woman.png",
-    //         alt: "Ícone de uma mulher programando"
-    //     },
-    //     gueio: {
-    //         src: "img/icon-collabcode.png",
-    //         alt: "Gueio mascote da CollabCode"
-    //     }
-    // };
-
-    // if (elemParent.classList.contains("-front")) {
-    //     $component.src = fields.gueio.src;
-    //     $component.alt = fields.gueio.alt;
-    // } else {
-    //     if (elemParent.classList.contains("-js")) {
-    //         $component.src = fields.js.src;
-    //         $component.alt = fields.js.alt;
-    //     } else if (elemParent.classList.contains("-bug")) {
-    //         $component.src = fields.bug.src;
-    //         $component.alt = fields.bug.alt;
-    //     }  else if (elemParent.classList.contains("-java")) {
-    //         $component.src = fields.java.src;
-    //         $component.alt = fields.java.alt;
-    //     }  else if (elemParent.classList.contains("-resp")) {
-    //         $component.src = fields.resp.src;
-    //         $component.alt = fields.resp.alt;
-    //     } else if (elemParent.classList.contains("-woman")) {
-    //         $component.src = fields.woman.src;
-    //         $component.alt = fields.woman.alt;
-    //     }
-    // }
-    // elemParent.classList.toggle("-front");
 }
+// Meu código antigo
+// const activeElements = document.getElementsByClassName("-active");
+
+// if (activeElements.length === 2) {
+//     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+//     notActive.forEach((item) => {
+//         item.classList.add("-block");
+//     });
+
+//     setTimeout(() => {
+//         activeElements[0].classList.remove("-active");
+//         activeElements[0].classList.remove("-active");
+//     }, 2000);
+// } else {
+//     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+//     notActive.forEach((item) => {
+//         item.classList.remove("-block");
+//     });
+// }
+
+// const fields = {
+//     bug: {
+//             src: "img/bug.png",
+//             alt: "Ícone de um bug"
+//         },
+//     resp: {
+//         src: "img/responsivo.png",
+//         alt: "Ícone de responsividade"
+//     },
+//     java: {
+//         src: "img/java.png",
+//         alt: "Ícone de um livro de Java"
+//     },
+//     js: {
+//         src: "img/js.png",
+//         alt: "Ícone de um livro de JS"
+//     },
+//     woman: {
+//         src: "img/woman.png",
+//         alt: "Ícone de uma mulher programando"
+//     },
+//     gueio: {
+//         src: "img/icon-collabcode.png",
+//         alt: "Gueio mascote da CollabCode"
+//     }
+// };
+
+// if (elemParent.classList.contains("-front")) {
+//     $component.src = fields.gueio.src;
+//     $component.alt = fields.gueio.alt;
+// } else {
+//     if (elemParent.classList.contains("-js")) {
+//         $component.src = fields.js.src;
+//         $component.alt = fields.js.alt;
+//     } else if (elemParent.classList.contains("-bug")) {
+//         $component.src = fields.bug.src;
+//         $component.alt = fields.bug.alt;
+//     }  else if (elemParent.classList.contains("-java")) {
+//         $component.src = fields.java.src;
+//         $component.alt = fields.java.alt;
+//     }  else if (elemParent.classList.contains("-resp")) {
+//         $component.src = fields.resp.src;
+//         $component.alt = fields.resp.alt;
+//     } else if (elemParent.classList.contains("-woman")) {
+//         $component.src = fields.woman.src;
+//         $component.alt = fields.woman.alt;
+//     }
+// }
+// elemParent.classList.toggle("-front");
