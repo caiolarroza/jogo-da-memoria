@@ -24,9 +24,9 @@ function createCardsWrapper() {
 
         $cardsWrapper.addEventListener("click", event => {
             //Meu selector
-            // qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active:not(.-found)").length;
+            //qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active:not(.-found)").length;
             qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
-            // $origin.closest(".memory-card.-active");
+            //$origin.closest(".memory-card.-active");
         })
 
     return $cardsWrapper;

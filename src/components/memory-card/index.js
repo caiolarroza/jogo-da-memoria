@@ -114,45 +114,49 @@ const memoryCard = () => {
     `;
 };
 
-let arrClicked = [];
-let score = 0;
-
 const handleClick = ($component, src) => {
 
     if (!$component.classList.contains("-active")) {
+        activeMemoryCard($component, src);
+        checkSure();
+    }
+}
 
-        if (qtdActiveMemoryCard < 2) {
-            $component.classList.toggle("-active");
-            arrClicked.push(src);
-        }
+function activeMemoryCard($component, src) {
+    if (qtdActiveMemoryCard < 2) {
+        $component.classList.add("-active");
+        store.arrClicked.push(src);
+    }
+}
 
-        const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
-        
-        if (qtdActiveMemoryCard == 1) {
-            if (arrClicked[0] == arrClicked[1]) {
+function checkSure() {
+    const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
+
+    if (qtdActiveMemoryCard == 1) {
+        if (store.arrClicked[0] == store.arrClicked[1]) {
+            $activeMemoryCards.forEach(($memoryCard) => {
+                $memoryCard.classList.add("-score");
+                $memoryCard.classList.remove("-active");
+            });
+            
+            qtdActiveMemoryCard = 0;
+            store.arrClicked = [];
+            store.score++;
+            console.log("store.score ", store.score);
+        } else {
+            setTimeout(() => {                    
                 $activeMemoryCards.forEach(($memoryCard) => {
-                    $memoryCard.classList.add("-score");
                     $memoryCard.classList.remove("-active");
                 });
                 
                 qtdActiveMemoryCard = 0;
-                arrClicked = [];
-                score++;
-                console.log("score ", score);
-            } else {
-                setTimeout(() => {                    
-                    $activeMemoryCards.forEach(($memoryCard) => {
-                        $memoryCard.classList.remove("-active");
-                    });
-                    
-                    qtdActiveMemoryCard = 0;
-                    arrClicked = [];
-                    
-                }, 1500);
-            }
+                store.arrClicked = [];
+                
+            }, 1500);
         }
     }
 }
+
 // Meu código antigo
 // const activeElements = document.getElementsByClassName("-active");
 
