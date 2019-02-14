@@ -1,19 +1,21 @@
 //object destructuring já recebendo como parãmentro as variáveis separadas
-const memoryCard = () => {
-    
-    //object destructuring
-    // const {src, alt, nameClass} = cardObj;
-    const $head = document.querySelector("head");
-    const $styleCard = document.createElement("style");
-    
-    $styleCard.textContent = `
+const memoryCard = (function() {
 
+    const memoryCard = () => {
+        
+        //object destructuring
+        // const {src, alt, nameClass} = cardObj;
+        const $head = document.querySelector("head");
+        const $styleCard = document.createElement("style");
+        
+        $styleCard.textContent = `
+        
         .memory-card { 
             width: 155px;
             height: 155px;
             position: relative;
         }
-
+        
         .memory-card .card {
             width: 155px;
             height: 155px;
@@ -29,30 +31,30 @@ const memoryCard = () => {
             position: absolute;
             /* margin: 16px;  minha forma de fazer*/ 
         }
-
+        
         .memory-card.-active .card,
         .memory-card.-score .card {
             display: none;
         }
-
+        
         .memory-card.-block {
             pointer-events: none;
         }
-
+        
         .memory-card.-active .card.-front,
         .memory-card.-score .card.-front {
             display: flex;
         }
-
+        
         .memory-card .card::selection {
             color: transparent;
         }
-    
+        
         .memory-card .card.-front {
             background-color: #fff;
             display: flex;
         }
-    
+        
         .memory-card .card.-front::before {
             content: "";
             width: 95px;
@@ -61,26 +63,26 @@ const memoryCard = () => {
             border-radius: 50%;
             position: absolute;
         }
-    
+        
         .memory-card .card > .icon {
             width: 100px;
             height: 100px;
         }
-    
+        
         .memory-card .card.-front > .icon {
             /* position: absolute; minha forma de fazer*/
             transform: translateY(-12px);
         }
-    
+        
         /* forma que fiz */
-    
+        
         /* @media (width: 375px) {
             .memory-card .card {
                 width: 95px;
                 height: 95px;
                 margin: 16px 46px;
             }
-    
+            
             .memory-card .card.-front::before {
                 width: 50px;
                 height: 50px;
@@ -91,85 +93,91 @@ const memoryCard = () => {
                 height: 50px;
             }
         } */`;
-    
-    $head.insertBefore($styleCard, null);
         
-    return ({src, alt, nameClass}) => `
-        <div class="memory-card" onClick="handleClick(this, '${src}')">
-            <article class="card -front">
-                <img 
-                    src="${src}" 
-                    alt="${alt}" 
-                    class="icon"
-                />
-            </article>
-            <article class="card">
-                <img 
-                    src="img/icon-collabcode.png"
-                    alt="O mascote da Collabcode o Gueio" 
-                    class="icon"
-                />
-            </article>
+        $head.insertBefore($styleCard, null);
+        
+        return ({src, alt, nameClass}) => `
+        <div class="memory-card" onClick="memoryCard.handleClick(this, '${src}')">
+        <article class="card -front">
+        <img 
+        src="${src}" 
+        alt="${alt}" 
+        class="icon"
+        />
+        </article>
+        <article class="card">
+        <img 
+        src="img/icon-collabcode.png"
+        alt="O mascote da Collabcode o Gueio" 
+        class="icon"
+        />
+        </article>
         </div>
-    `;
-};
-
-const handleClick = ($component, src) => {
-
-    if (!$component.classList.contains("-active")) {
-        activeMemoryCard($component, src);
-        checkSure();
+        `;
+    };
+    
+    const handleClick = ($component, src) => {
+        
+        if (!$component.classList.contains("-active")) {
+            activeMemoryCard($component, src);
+            checkSure();
+        }
     }
-}
-
-function activeMemoryCard($component, src) {
-    if (qtdActiveMemoryCard < 2) {
-        $component.classList.add("-active");
-        store.arrClicked.push(src);
+    
+    function activeMemoryCard($component, src) {
+        if (qtdActiveMemoryCard < 2) {
+            $component.classList.add("-active");
+            store.arrClicked.push(src);
+        }
     }
-}
-
-function checkSure() {
-    const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
-
-    if (qtdActiveMemoryCard == 1) {
-        if (store.arrClicked[0] == store.arrClicked[1]) {
-            $activeMemoryCards.forEach(($memoryCard) => {
-                $memoryCard.classList.add("-score");
-                $memoryCard.classList.remove("-active");
-            });
-            
-            qtdActiveMemoryCard = 0;
-            store.arrClicked = [];
-            store.score++;
-            console.log("store.score ", store.score);
-        } else {
-            setTimeout(() => {                    
+    
+    function checkSure() {
+        const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
+        
+        if (qtdActiveMemoryCard == 1) {
+            if (store.arrClicked[0] == store.arrClicked[1]) {
                 $activeMemoryCards.forEach(($memoryCard) => {
+                    $memoryCard.classList.add("-score");
                     $memoryCard.classList.remove("-active");
                 });
                 
                 qtdActiveMemoryCard = 0;
                 store.arrClicked = [];
-                
-            }, 1500);
+                store.score++;
+                console.log("store.score ", store.score);
+            } else {
+                setTimeout(() => {                    
+                    $activeMemoryCards.forEach(($memoryCard) => {
+                        $memoryCard.classList.remove("-active");
+                    });
+                    
+                    qtdActiveMemoryCard = 0;
+                    store.arrClicked = [];
+                    
+                }, 1500);
+            }
         }
     }
-}
 
+    return {
+        new: memoryCard,
+        handleClick: handleClick
+    };
+})();
+    
 // Meu código antigo
 // const activeElements = document.getElementsByClassName("-active");
 
 // if (activeElements.length === 2) {
-//     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
-//     notActive.forEach((item) => {
-//         item.classList.add("-block");
-//     });
-
-//     setTimeout(() => {
-//         activeElements[0].classList.remove("-active");
-//         activeElements[0].classList.remove("-active");
-//     }, 2000);
+    //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
+    //     notActive.forEach((item) => {
+        //         item.classList.add("-block");
+        //     });
+        
+        //     setTimeout(() => {
+            //         activeElements[0].classList.remove("-active");
+            //         activeElements[0].classList.remove("-active");
+            //     }, 2000);
 // } else {
 //     const notActive = document.querySelectorAll("div.memory-card:not(.-active)");
 //     notActive.forEach((item) => {
