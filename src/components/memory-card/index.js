@@ -1,7 +1,9 @@
 //object destructuring já recebendo como parãmentro as variáveis separadas
 const memoryCard = (function() {
 
-    const memoryCard = () => {
+    const module = {};
+
+    const create = () => {
         
         //object destructuring
         // const {src, alt, nameClass} = cardObj;
@@ -98,40 +100,40 @@ const memoryCard = (function() {
         
         return ({src, alt, nameClass}) => `
         <div class="memory-card" onClick="memoryCard.handleClick(this, '${src}')">
-        <article class="card -front">
-        <img 
-        src="${src}" 
-        alt="${alt}" 
-        class="icon"
-        />
-        </article>
-        <article class="card">
-        <img 
-        src="img/icon-collabcode.png"
-        alt="O mascote da Collabcode o Gueio" 
-        class="icon"
-        />
-        </article>
+            <article class="card -front">
+                <img 
+                    src="${src}" 
+                    alt="${alt}" 
+                    class="icon"
+                />
+            </article>
+            <article class="card">
+                <img 
+                src="img/icon-collabcode.png"
+                alt="O mascote da Collabcode o Gueio" 
+                class="icon"
+                />
+            </article>
         </div>
         `;
     };
     
-    const handleClick = ($component, src) => {
+    module._handleClick = ($component, src) => {
         
         if (!$component.classList.contains("-active")) {
-            activeMemoryCard($component, src);
-            checkSure();
+            module._activeMemoryCard($component, src);
+            module._checkSure();
         }
     }
     
-    function activeMemoryCard($component, src) {
+    module._activeMemoryCard = ($component, src) => {
         if (qtdActiveMemoryCard < 2) {
             $component.classList.add("-active");
             store.arrClicked.push(src);
         }
     }
     
-    function checkSure() {
+    module._checkSure = () => {
         const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
         
         if (qtdActiveMemoryCard == 1) {
@@ -159,9 +161,11 @@ const memoryCard = (function() {
         }
     }
 
+    //Da para dar o return de 3 formas: colocando o nome da func: nome da func, declarar a func dentro do próprio obj ou criar um module.
+    //Com o module não da para acessarem a func fora do código. Underline(_) é uma boa pratica para mostrar que a func é privada
     return {
-        new: memoryCard,
-        handleClick: handleClick
+        create,
+        handleClick: module._handleClick
     };
 })();
     

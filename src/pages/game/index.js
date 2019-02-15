@@ -5,7 +5,7 @@
     const $root = document.querySelector("#root");
     
     const $cardsWrapper = createCardsWrapper();
-    const createMemoryCard = memoryCard.new();
+    const createMemoryCard = memoryCard.create();
 
     
     const $memoryCardBug = createMemoryCard({src: "img/bug.png", alt: "Ícone de um bug"});
