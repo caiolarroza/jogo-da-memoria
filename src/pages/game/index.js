@@ -13,6 +13,7 @@
     const $memoryCardJS = createMemoryCard({src: "img/js.png", alt: "Ícone de um livro de JS"});
     const $memoryCardGueio = createMemoryCard({src: "img/icon-collabcode.png", alt: "Gueio mascote da CollabCode"});
     const $pointBar = pointBar.create();
+    const $startButton = startButton.create();
     
     $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
     $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
@@ -25,4 +26,7 @@
     
     $root.insertAdjacentElement("beforeend", $cardsWrapper);
     $root.insertAdjacentHTML("afterbegin", $pointBar);
+    $root.insertAdjacentHTML("beforeend", $startButton);
+
+    console.log(document.getElementsByClassName("start-button"));
 })();
