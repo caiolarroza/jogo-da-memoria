@@ -146,7 +146,8 @@ const memoryCard = (function() {
                 qtdActiveMemoryCard = 0;
                 store.arrClicked = [];
                 store.score++;
-                console.log("store.score ", store.score);
+
+                module.showScore();
             } else {
                 setTimeout(() => {                    
                     $activeMemoryCards.forEach(($memoryCard) => {
@@ -161,11 +162,17 @@ const memoryCard = (function() {
         }
     }
 
+    module.showScore = () => {
+        $pointBar = document.querySelector(".number");
+        $pointBar.textContent = `${store.score}`;
+    }
+
     //Da para dar o return de 3 formas: colocando o nome da func: nome da func, declarar a func dentro do próprio obj ou criar um module.
     //Com o module não da para acessarem a func fora do código. Underline(_) é uma boa pratica para mostrar que a func é privada
     return {
         create,
-        handleClick: module._handleClick
+        handleClick: module._handleClick,
+        showScore: module.showScore
     };
 })();
     

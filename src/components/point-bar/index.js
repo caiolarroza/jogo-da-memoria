@@ -28,7 +28,7 @@ const pointBar = (function () {
 
         return `
             <header class="point-bar">
-                <span class="number">0</span>
+                <span class="number"></span>
             </header>    
         `;
     }

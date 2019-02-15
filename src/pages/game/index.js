@@ -27,6 +27,4 @@
     $root.insertAdjacentElement("beforeend", $cardsWrapper);
     $root.insertAdjacentHTML("afterbegin", $pointBar);
     $root.insertAdjacentHTML("beforeend", $startButton);
-
-    console.log(document.getElementsByClassName("start-button"));
 })();
