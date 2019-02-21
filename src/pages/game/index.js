@@ -27,8 +27,7 @@
     
     $root.insertAdjacentElement("beforeend", $cardsWrapper);
     $root.insertAdjacentHTML("afterbegin", $pointBar);
-
     $root.insertAdjacentHTML("beforeend", $darkLayer);
-
     $root.insertAdjacentHTML("beforeend", $startButton);
+    
 })();

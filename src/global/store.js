@@ -4,3 +4,12 @@ const store = {
 };
 
 memoryCard.showScore();
+
+$startButton = document.querySelector(".start-button");
+$startButton.addEventListener("click", event => {
+    startButton.hide();
+
+    setTimeout(() => {
+        darkLayer.hide();
+    }, 500);
+});

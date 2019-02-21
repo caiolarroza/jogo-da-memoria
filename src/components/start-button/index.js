@@ -23,6 +23,12 @@ const startButton = (function () {
             .start-button .play-icon {
                 width: 24px;
             }
+
+            .-hide {
+                display: none;
+                transition: opacity 600ms, visibility 600ms linear;
+            }
+
         `;
 
         $head.insertBefore($style, null);
@@ -30,7 +36,7 @@ const startButton = (function () {
 
     module.render = () => {
         module._style();
-
+        
         return `
             <button type="button" class="start-button">
                 <img class="play-icon" src="../../img/play.svg">
@@ -38,8 +44,15 @@ const startButton = (function () {
         `;
     }
 
+    module.hide = () => {
+        $startButton = document.querySelector(".start-button");
+        // $startButton.setAttribute("hidden", "hidden");
+        $startButton.classList.add("-hide");
+    }
+
     return {
-        render: module.render
+        render: module.render,
+        hide: module.hide
     };
 
 })();
