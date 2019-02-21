@@ -13,7 +13,7 @@
     const $memoryCardJS = createMemoryCard({src: "img/js.png", alt: "Ícone de um livro de JS"});
     const $memoryCardGueio = createMemoryCard({src: "img/icon-collabcode.png", alt: "Gueio mascote da CollabCode"});
     const $pointBar = pointBar.create();
-    const $startButton = startButton.create();
+    const $startButton = startButton.render();
     
     $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
     $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);

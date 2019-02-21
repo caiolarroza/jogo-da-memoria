@@ -163,8 +163,8 @@ const memoryCard = (function() {
     }
 
     module.showScore = () => {
-        $pointBar = document.querySelector(".number");
-        $pointBar.textContent = `${store.score}`;
+        $pointBar = document.querySelector(".point-bar > .number");
+        $pointBar.textContent = store.score;
     }
 
     //Da para dar o return de 3 formas: colocando o nome da func: nome da func, declarar a func dentro do próprio obj ou criar um module.

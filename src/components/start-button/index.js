@@ -11,11 +11,12 @@ const startButton = (function () {
                 position: fixed;
                 bottom: 10px;
                 right: 10px;
-                height: 40px;
-                width: 40px;
+                height: 70px;
+                width: 70px;
                 border-radius: 50%;
                 border: none;
                 background-color: #4cc34e;
+                box-shadow: 1px 3px 8px #3a4042;
             }
 
             .start-button .play-icon {
@@ -26,7 +27,7 @@ const startButton = (function () {
         $head.insertBefore($style, null);
     }
 
-    module.create = () => {
+    module.render = () => {
         module._style();
 
         return `
@@ -37,7 +38,7 @@ const startButton = (function () {
     }
 
     return {
-        create: module.create
+        render: module.render
     };
 
 })();
