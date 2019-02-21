@@ -17,6 +17,7 @@ const startButton = (function () {
                 border: none;
                 background-color: #4cc34e;
                 box-shadow: 1px 3px 8px #3a4042;
+                cursor: pointer;
             }
 
             .start-button .play-icon {

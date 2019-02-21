@@ -18,16 +18,17 @@ function createCardsWrapper() {
         
         .cards-wrapper > div {
             margin-bottom: 10px;
-        }`;
+        }
+    `;
 
-        $head.insertBefore($styleWrapper, null);
+    $head.insertBefore($styleWrapper, null);
 
-        $cardsWrapper.addEventListener("click", event => {
-            //Meu selector
-            //qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active:not(.-found)").length;
-            qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
-            //$origin.closest(".memory-card.-active");
-        })
+    $cardsWrapper.addEventListener("click", event => {
+        //Meu selector
+        //qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active:not(.-found)").length;
+        qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
+        //$origin.closest(".memory-card.-active");
+    })
 
     return $cardsWrapper;
 }
