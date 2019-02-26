@@ -5,11 +5,11 @@ const store = {
 
 memoryCard.showScore();
 
-$startButton = document.querySelector(".start-button");
-$startButton.addEventListener("click", event => {
-    startButton.hide();
+// $startButton = document.querySelector(".start-button");
+// $startButton.addEventListener("click", event => {
+//     startButton.hide();
 
-    setTimeout(() => {
-        darkLayer.hide();
-    }, 500);
-});
+//     setTimeout(() => {
+//         transparencyLayer.hide();
+//     }, 500);
+// });

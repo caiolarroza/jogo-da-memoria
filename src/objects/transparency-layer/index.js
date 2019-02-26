@@ -1,5 +1,5 @@
 
-const darkLayer = (function() {
+const transparencyLayer = (function() {
 
     const module = {};
 
@@ -8,11 +8,11 @@ const darkLayer = (function() {
         const $style = document.createElement("style");
 
         $style.textContent = `
-            .dark-layer {
+            .transparency-layer {
                 position: absolute;
                 top: 0;
-                width: 100%;
-                height: 100%;
+                width: 100vw;
+                height: 100vh;
                 background-color: rgba(0, 0, 0, .3);
             }
 
@@ -29,14 +29,14 @@ const darkLayer = (function() {
         module._style();
 
         return `
-            <div class="dark-layer"></div>
+            <div class="transparency-layer"></div>
         `;
     }
 
     module.hide = () => {
-        $darkLayer = document.querySelector(".dark-layer");
-        // $darkLayer.setAttribute("hidden", "hidden");
-        $darkLayer.classList.add("-hide");
+        $transparencyLayer = document.querySelector(".transparency-layer");
+        // $transparencyLayer.setAttribute("hidden", "hidden");
+        $transparencyLayer.classList.add("-hide");
     }
 
     return {
