@@ -14,12 +14,12 @@ const transparencyLayer = (function() {
                 width: 100vw;
                 height: 100vh;
                 background-color: rgba(0, 0, 0, .3);
+                transition: opacity 300ms 200ms linear;
             }
 
-            .-hide {
-                display: none;
-                transition: opacity 600ms, visibility 600ms linear;
-            };
+            .transparency-layer.-disable {
+                opacity: 0;
+            }
         `;
 
         $head.insertBefore($style, null);
@@ -33,14 +33,7 @@ const transparencyLayer = (function() {
         `;
     }
 
-    module.hide = () => {
-        $transparencyLayer = document.querySelector(".transparency-layer");
-        // $transparencyLayer.setAttribute("hidden", "hidden");
-        $transparencyLayer.classList.add("-hide");
-    }
-
     return {
-        render: module.render,
-        hide: module.hide
+        render: module.render
     };
 })();

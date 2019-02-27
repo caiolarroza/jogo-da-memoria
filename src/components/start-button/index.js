@@ -18,17 +18,16 @@ const startButton = (function () {
                 background-color: #4cc34e;
                 box-shadow: 1px 3px 8px #3a4042;
                 cursor: pointer;
+                transition: opacity 200ms linear;
             }
 
             .start-button .play-icon {
                 width: 24px;
             }
 
-            .-hide {
-                display: none;
-                transition: opacity 600ms, visibility 600ms linear;
+            .start-button.-disable {
+                opacity: 0;
             }
-
         `;
 
         $head.insertBefore($style, null);
@@ -44,15 +43,8 @@ const startButton = (function () {
         `;
     }
 
-    module.hide = () => {
-        $startButton = document.querySelector(".start-button");
-        // $startButton.setAttribute("hidden", "hidden");
-        $startButton.classList.add("-hide");
-    }
-
     return {
-        render: module.render,
-        hide: module.hide
+        render: module.render
     };
 
 })();
