@@ -18,7 +18,7 @@ const startButton = (function () {
                 background-color: #4cc34e;
                 box-shadow: 1px 3px 8px #3a4042;
                 cursor: pointer;
-                transition: opacity 200ms linear;
+                transition: all 2s linear;
             }
 
             .start-button .play-icon {
@@ -26,6 +26,7 @@ const startButton = (function () {
             }
 
             .start-button.-disable {
+                transform: scale(1.3);
                 opacity: 0;
             }
         `;
