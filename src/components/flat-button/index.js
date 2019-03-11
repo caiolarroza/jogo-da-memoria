@@ -14,17 +14,20 @@ const flatButton = (function () {
                 width: 186px;
                 height: 176px;
                 text-transform: uppercase;
-            };
+            }
+            
+            .flat-button.-signup {
+                background-color: #f25a70;
+            }
         `;
 
         $head.insertAdjacentElement("beforeend", $style);
 
     }
 
-    module.render = (label) => {
-        console.log("label ", label);
+    module.render = (label, modificator) => {
         module._style();
-        return `<button class="flat-button">${label}</button>`;
+        return `<button class="flat-button ${ modificator }">${label}</button>`;
     };
 
     return {
