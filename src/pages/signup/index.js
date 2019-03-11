@@ -5,4 +5,5 @@
 
     $root.insertAdjacentHTML("beforeend", "<h1>Welcome</h1>");
     $root.insertAdjacentHTML("beforeend", $flatButton);
+    $root.insertAdjacentHTML("beforeend", $flatButton);
 })();
