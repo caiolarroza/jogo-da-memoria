@@ -11,6 +11,11 @@ const flatButton = (function () {
         $style.textContent = `
             .flat-button-${module._id} {
                 background-color: ${active ? "#f25a70" : "#eae6da"};
+                display: inline-block;
+                text-align: center;
+                padding-top: 60px;
+                box-sizing: border-box;
+                text-decoration: none;
                 color: ${active ? "#fff" : "#fffcee"};
                 font-size: 24px;
                 font-weight: bold;
@@ -23,12 +28,12 @@ const flatButton = (function () {
         $head.insertAdjacentElement("beforeend", $style);
 
     }
-
+    //Para arrumar o botão usando button tem que colocar o display: inline-flex e adicionar o justify-content: center
     module.render = (content, active = false) => {
         module._id++;
         module._style(active);
         
-        return `<button class="flat-button-${module._id}">${ content }</button>`;
+        return `<a href="#" class="flat-button-${module._id}">${ content }</a>`;
     };
 
     return {
