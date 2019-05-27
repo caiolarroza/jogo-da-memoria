@@ -1,14 +1,14 @@
 const flatButton = (function () {
-    const module = {};
+  const module = {};
 
-    module._id = 0;
+  module._id = 0;
 
-    module._style = (active) => {
-        const $head = document.querySelector("head");
-        const $style = document.createElement("style");
+  module._style = (active) => {
+    const $head = document.querySelector("head");
+    const $style = document.createElement("style");
 
-        
-        $style.textContent = `
+
+    $style.textContent = `
             .flat-button-${module._id} {
                 background-color: ${active ? "#f25a70" : "#eae6da"};
                 display: inline-block;
@@ -25,18 +25,27 @@ const flatButton = (function () {
             }
         `;
 
-        $head.insertAdjacentElement("beforeend", $style);
+    $head.insertAdjacentElement("beforeend", $style);
 
-    }
-    //Para arrumar o botão usando button tem que colocar o display: inline-flex e adicionar o justify-content: center
-    module.render = (content, active = false) => {
-        module._id++;
-        module._style(active);
-        
-        return `<a href="#" class="flat-button-${module._id}">${ content }</a>`;
-    };
+  }
 
-    return {
-        render: module.render
-    }
+  module.handleClick = path => {
+    console.log(path);
+    window.location.hash = `#/${path}`;
+  }
+  //Para arrumar o botão usando button tem que colocar o display: inline-flex e adicionar o justify-content: center
+  module.render = (content, active = false, path = "") => {
+    module._id++;
+    module._style(active);
+
+    return `<button
+              href="#"
+              class="flat-button-${module._id}"
+              onClick="flatButton.handleClick('${path}')">${content}</button>`;
+  };
+
+  return {
+    render: module.render,
+    handleClick: module.handleClick
+  }
 })()

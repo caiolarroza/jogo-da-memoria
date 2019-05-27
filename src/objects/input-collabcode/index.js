@@ -1,11 +1,11 @@
-const inputCollabcode = (function() {
-    const module = {};
+const inputCollabcode = (function () {
+  const module = {};
 
-    module._style = () => {
-        const $head = document.querySelector("head");
-        const $style = document.createElement("style");
+  module._style = () => {
+    const $head = document.querySelector("head");
+    const $style = document.createElement("style");
 
-        $style.textContent = `
+    $style.textContent = `
             .input-collabcode {
                 color: #3a4042;
                 display: block;
@@ -18,16 +18,16 @@ const inputCollabcode = (function() {
             }
         `;
 
-        $head.insertAdjacentElement("beforeend", $style);
-    }
+    $head.insertAdjacentElement("beforeend", $style);
+  }
 
-    module.render = ({ placeholder = "", type = "text" }) => {
-        module._style();
-        
-        return `<input type="${type}" class="input-collabcode" placeholder=${placeholder}>`;
-    }
+  module.render = ({ id = "", placeholder = "", type = "text" }) => {
+    module._style();
 
-    return {
-        render: module.render
-    }
+    return `<input id="${id}" type="${type}" class="input-collabcode" placeholder="${placeholder}">`;
+  }
+
+  return {
+    render: module.render
+  }
 })();

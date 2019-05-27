@@ -1,53 +1,53 @@
 const formSignup = (function () {
-    const module = {};
+  const module = {};
 
-    module._style = () => {
-        const $head = document.querySelector("head");
-        const $style = document.createElement("style");
+  module._style = () => {
+    const $head = document.querySelector("head");
+    const $style = document.createElement("style");
 
-        $style.textContent = `
+    $style.textContent = `
             .form-signup {
                 padding: 0 35px 40px;
             }
         `;
 
-        $head.insertAdjacentElement("beforeend", $style);
-    }
+    $head.insertAdjacentElement("beforeend", $style);
+  }
 
-    module._children = () => {
-        const $emailLabel = labelCollabcode.render("E-mail");
-        const $emailInput = inputCollabcode.render({placeholder: "example@gmail.com", type: "email"});
-    
-        const $usernameLabel = labelCollabcode.render("Username");
-        const $usernameInput = inputCollabcode.render("caiolarroza");
-    
-        const $passwordLabel = labelCollabcode.render("Password");
-        const $passwordInput = inputCollabcode.render({placeholder: "******", type: "password"});
-    
-        const $confirmPasswordLabel = labelCollabcode.render("Confirm Password");
-        const $confirmPasswordInput = inputCollabcode.render({placeholder: "******", type: "password"});
+  module._children = () => {
+    const $emailLabel = labelCollabcode.render("E-mail");
+    const $emailInput = inputCollabcode.render({ placeholder: "example@gmail.com", type: "email" });
 
-        const $btn = btnCollabcode.render("Signup");
+    const $usernameLabel = labelCollabcode.render("Username");
+    const $usernameInput = inputCollabcode.render("caiolarroza");
 
-        return `
-            ${ $emailLabel }
-            ${ $emailInput }
-            ${ $usernameLabel }
-            ${ $usernameInput }
-            ${ $passwordLabel }
-            ${ $passwordInput }
-            ${ $confirmPasswordLabel }
-            ${ $confirmPasswordInput }
-            ${ $btn }
+    const $passwordLabel = labelCollabcode.render("Password");
+    const $passwordInput = inputCollabcode.render({ placeholder: "******", type: "password" });
+
+    const $confirmPasswordLabel = labelCollabcode.render("Confirm Password");
+    const $confirmPasswordInput = inputCollabcode.render({ placeholder: "******", type: "password" });
+
+    const $btn = btnCollabcode.render({ content: "Signup", path: "login" });
+
+    return `
+            ${ $emailLabel}
+            ${ $emailInput}
+            ${ $usernameLabel}
+            ${ $usernameInput}
+            ${ $passwordLabel}
+            ${ $passwordInput}
+            ${ $confirmPasswordLabel}
+            ${ $confirmPasswordInput}
+            ${ $btn}
         `
-    }
+  }
 
-    module.render = () => {
-        module._style();
-        return `<form class="form-signup" action="" method="POST">${ module._children() }</form>`;
-    }
+  module.render = () => {
+    module._style();
+    return `<form class="form-signup" action="" method="POST">${module._children()}</form>`;
+  }
 
-    return {
-        render: module.render
-    }
+  return {
+    render: module.render
+  }
 })();
