@@ -1,6 +1,7 @@
 //Envolver a function com () para tornar a função anônima
 //Para ela se auto executar (function)();
 //Também conhecido como IIFE
+
 const game = (function() {
     const $root = document.querySelector("#root");
 
