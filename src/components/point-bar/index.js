@@ -1,12 +1,12 @@
 const pointBar = (function () {
 
-    const module = {};
+  const module = {};
 
-    module._style = () => {
-        const $head = document.querySelector("head");
-        const $style = document.createElement("style");
+  module._style = () => {
+    const $head = document.querySelector("head");
+    const $style = document.createElement("style");
 
-        $style.textContent = `
+    $style.textContent = `
             .point-bar {
                 background-color: #3a4042;
                 height: 40px;
@@ -20,21 +20,21 @@ const pointBar = (function () {
             }
         `;
 
-        $head.insertBefore($style, null);
-    }
+    $head.insertBefore($style, null);
+  }
 
-    module.create = () => {
-        module._style();
+  module.create = () => {
+    module._style();
 
-        return `
-            <header class="point-bar">
-                <span class="number"></span>
-            </header>    
-        `;
-    }
+    return `
+      <header class="point-bar">
+        <span class="number"></span>
+      </header>
+    `;
+  }
 
-    return {
-        create: module.create
-    };
+  return {
+    create: module.create
+  };
 
 })();
