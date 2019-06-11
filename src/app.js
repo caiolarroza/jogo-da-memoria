@@ -8,11 +8,4 @@
   paths["#/404"] = status404;
 
   paths[hash] ? paths[hash]() : paths["#/404"]();
-
-  // if (paths[hash]) {
-  //   paths[hash]();
-  // } else {
-  //   paths["#/404"]();
-  // }
-
 })();
