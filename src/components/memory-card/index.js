@@ -164,6 +164,7 @@ const memoryCard = (function() {
 
     module.showScore = () => {
         $pointBar = document.querySelector(".point-bar > .number");
+        console.log('$pointBar ', $pointBar);
         $pointBar.textContent = store.score;
     }
 

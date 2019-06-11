@@ -30,9 +30,10 @@ const flatButton = (function () {
   }
 
   module.handleClick = path => {
-    console.log(path);
-    window.location.hash = `#/${path}`;
+    location.hash = `#/${path}`;
+    location.reload(true);
   }
+  
   //Para arrumar o botão usando button tem que colocar o display: inline-flex e adicionar o justify-content: center
   module.render = (content, active = false, path = "") => {
     module._id++;
